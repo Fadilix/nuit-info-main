@@ -1,5 +1,6 @@
 'use client';
 import {useState, useEffect} from 'react';
+import { useSearchParams } from 'next/navigation';
 import JumpScare from "@/app/components/screenhack";
 import WhatsAppNotification from "@/app/components/WhatsAppNotification";
 import TerminalAnimation from "@/app/components/TerminalAnimation";
@@ -14,16 +15,28 @@ export default function Desktop() {
     const [showJumpscare, setShowJumpscare] = useState(false);
     const [showDiary, setShowDiary] = useState(false);
     const [showBrowser, setShowBrowser] = useState(false);
+    const [initialBrowserUrl, setInitialBrowserUrl] = useState<string>('');
     const { hours, seconds } = useCountdown();
+    const searchParams = useSearchParams();
 
     useEffect(() => {
+        // Check URL parameters
+        const app = searchParams.get('app');
+        const url = searchParams.get('url');
+
         // Check if user has already seen the notification
         const hasSeenNotification = localStorage.getItem('hasSeenNotification');
         const hasCompletedCycle = localStorage.getItem('hasCompletedCycle');
 
         // Use setTimeout to avoid ESLint warning about synchronous setState in effect
         setTimeout(() => {
-            if (!hasSeenNotification) {
+            // Handle URL parameters first
+            if (app === 'browser') {
+                setShowBrowser(true);
+                if (url) {
+                    setInitialBrowserUrl(url);
+                }
+            } else if (!hasSeenNotification) {
                 // First time ever - show notification
                 setShowNotification(true);
             } else if (!hasCompletedCycle) {
@@ -32,7 +45,7 @@ export default function Desktop() {
             }
             // If hasCompletedCycle is true, stay on desktop (don't show anything)
         }, 0);
-    }, []);
+    }, [searchParams]);
 
     const handleNotificationClick = () => {
         // Mark notification as seen
@@ -58,7 +71,7 @@ export default function Desktop() {
     const hasCompletedCycle = typeof window !== 'undefined' && localStorage.getItem('hasCompletedCycle') === 'true';
 
     return (
-        <div className="h-screen w-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 relative overflow-hidden">
+        <div className="h-screen w-screen wall_back relative overflow-hidden">
             {/* WhatsApp Notification */}
             {showNotification && <WhatsAppNotification onNotificationClick={handleNotificationClick} />}
 
@@ -231,7 +244,7 @@ export default function Desktop() {
                     initialX={100}
                     initialY={40}
                 >
-                    <Browser />
+                    <Browser initialUrl={initialBrowserUrl} />
                 </Window>
             )}
         </div>

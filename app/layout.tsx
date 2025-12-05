@@ -6,7 +6,6 @@ import {CountdownProvider} from "./context/CountdownContext";
 
 const manrope = Manrope({
     subsets: ["latin"],
-    // weight: ["400", "700"],
 })
 export const metadata: Metadata = {
     title: "Create Next App",

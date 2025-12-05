@@ -1,14 +1,35 @@
 'use client';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import DriveApp from './DriveApp';
 import InstagramApp from './InstagramApp';
 import OnlyFonApp from './OnlyFonApp';
 
-export default function Browser() {
+interface BrowserProps {
+    initialUrl?: string;
+}
+
+export default function Browser({ initialUrl }: BrowserProps = {}) {
     const [url, setUrl] = useState('');
     const [currentPage, setCurrentPage] = useState<'home' | 'drive' | 'instagram' | 'onlyfon'>('home');
     const [searchSuggestion, setSearchSuggestion] = useState('');
     const inputRef = useRef<HTMLInputElement>(null);
+
+    // Handle initial URL from props
+    useEffect(() => {
+        if (initialUrl) {
+            const lowerUrl = initialUrl.toLowerCase();
+            if (lowerUrl === 'onlyfon' || lowerUrl.includes('onlyfon')) {
+                setCurrentPage('onlyfon');
+                setUrl('https://onlyfon.com/emily.rose_exclusive');
+            } else if (lowerUrl === 'instagrom' || lowerUrl.includes('instagrom')) {
+                setCurrentPage('instagram');
+                setUrl('https://instagrom.com/martin.kil');
+            } else if (lowerUrl === 'drive' || lowerUrl.includes('drive')) {
+                setCurrentPage('drive');
+                setUrl('https://drive.google.com/my-photos');
+            }
+        }
+    }, [initialUrl]);
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault();

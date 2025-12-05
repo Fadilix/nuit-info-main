@@ -1,7 +1,15 @@
 'use client';
 import React from 'react';
+import {useRouter} from "next/navigation";
 
 export default function IdentityPage() {
+    const router = useRouter()
+
+    const handleReportProfile = () => {
+        router.push("/credits");
+        console.log("Profile reported for review.");
+    }
+
     return (
         <div className="h-full w-full bg-gradient-to-br from-gray-900 via-red-900 to-black flex flex-col justify-center items-center p-8 text-white overflow-auto">
             <div className="max-w-2xl w-full bg-black/50 backdrop-blur-sm rounded-lg border-2 border-red-600 p-8 shadow-2xl">
@@ -83,7 +91,7 @@ export default function IdentityPage() {
 
                 {/* Action Buttons */}
                 <div className="mt-6 flex gap-3">
-                    <button className="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-lg transition-colors">
+                    <button onClick={handleReportProfile} className="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-lg transition-colors">
                         Signaler le profil
                     </button>
                     <button className="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 rounded-lg transition-colors">

@@ -18,7 +18,7 @@ export default function WarningPage({ onCorrectAnswer }: WarningPageProps) {
     const checkAnswer = () => {
         const value = answer.trim();
 
-        if (value === '1/10/2022') {
+        if (value === '01102022') {
             onCorrectAnswer();
         } else {
             alert('Mauvaise réponse. Indice : c\'est une date.');

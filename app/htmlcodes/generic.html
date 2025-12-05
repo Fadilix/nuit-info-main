@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Générique</title>
+    <style>
+        body {
+            background: black;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .screen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .visible {
+            opacity: 1;
+        }
+
+        .role {
+            font-size: 4rem;      /* ← PLUS GRAND */
+            font-weight: bold;
+            margin-bottom: 25px;  /* ↑ espace augmenté */
+            opacity: 0;
+        }
+
+        .name {
+            font-size: 3rem;      /* ← PLUS GRAND */
+            opacity: 0;
+        }
+
+        .fade {
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="screen">
+    <div class="role">Scripter </div>
+    <div class="name">TIMEO CANTO-RINGELSTEIN</div>
+</div>
+
+<div class="screen">
+    <div class="role">Developper </div>
+    <div class="name">Fadilou MOROU - Nidhal SOUMRI</div>
+</div>
+
+<div class="screen">
+    <div class="role">Help </div>
+    <div class="name">ZAIER WASSEF - JAWEL BRIKI - YOUNES TSOULI</div>
+</div>
+
+<div class="screen">
+    <div class="role">Promotion </div>
+    <div class="name">SI3 POLYTECH NICE SOPHIA</div>
+</div>
+
+<div class="screen">
+    <div class="role">TO BE CONTINUED ...</div>
+</div>
+
+<script>
+    const screens = document.querySelectorAll(".screen");
+    let index = 0;
+
+    function showNext() {
+        screens.forEach(s => s.classList.remove("visible"));
+
+        if (index < screens.length) {
+            const screen = screens[index];
+            const role = screen.querySelector(".role");
+            const name = screen.querySelector(".name");
+
+            role.classList.remove("fade");
+            if (name) name.classList.remove("fade");
+
+            void role.offsetWidth;
+            if (name) void name.offsetWidth;
+
+            role.style.animationDelay = "0s";
+            role.classList.add("fade");
+
+            if (name) {
+                name.style.animationDelay = "1.5s";
+                name.classList.add("fade");
+            }
+
+            screen.classList.add("visible");
+
+            index++;
+            setTimeout(showNext, 3500);
+        }
+    }
+
+    showNext();
+</script>
+
+</body>
+</html>

@@ -8,17 +8,20 @@ interface DriveFile {
     type: 'image';
     thumbnail: string;
     isBlurred: boolean;
+    date: string;
+    description?: string;
+    isCompromised?: boolean;
 }
 
 const driveFiles: DriveFile[] = [
-    { id: 1, name: 'vacances_2022.jpg', type: 'image', thumbnail: '/img.png', isBlurred: true },
-    { id: 2, name: 'anniversaire_marc.jpg', type: 'image', thumbnail: '/img.png', isBlurred: true },
-    { id: 3, name: 'projet_alpha.jpg', type: 'image', thumbnail: '/img.png', isBlurred: true },
-    { id: 4, name: 'soiree_plage.jpg', type: 'image', thumbnail: '/img.png', isBlurred: true },
-    { id: 5, name: 'bureau_equipe.jpg', type: 'image', thumbnail: '/img.png', isBlurred: true },
-    { id: 6, name: 'weekend_ski.jpg', type: 'image', thumbnail: '/img.png', isBlurred: true },
-    { id: 7, name: 'restaurant_julien.jpg', type: 'image', thumbnail: '/img.png', isBlurred: true },
-    { id: 8, name: 'masqué.jpg', type: 'image', thumbnail: '/img.png', isBlurred: false },
+    { id: 1, name: 'anniversaire_marc.jpg', type: 'image', thumbnail: '/ressources/10-janvier-2025.png', isBlurred: false, date: '15 juin 2024', description: 'Soirée d\'anniversaire' },
+    { id: 2, name: 'robe_rouge_resto.jpg', type: 'image', thumbnail: '/ressources/3-octobre-2025.png', isBlurred: false, date: '22 septembre 2024', description: 'Dîner au restaurant' },
+    { id: 3, name: 'diner_julien.jpg', type: 'image', thumbnail: '/ressources/13-octobre-2024.png', isBlurred: false, date: '10 janvier 2025', description: 'Dîner avec Julien' },
+    { id: 4, name: 'fleurs_bureau.jpg', type: 'image', thumbnail: '/ressources/15-juin-2024.png', isBlurred: false, date: '14 avril 2025', description: 'Bouquet anonyme' },
+    { id: 5, name: 'derniere_photo_julien.jpg', type: 'image', thumbnail: '/ressources/22-semptembre-2024.png', isBlurred: false, date: '20 mai 2025', description: 'Dernier moment ensemble' },
+    { id: 6, name: 'volets_fermes.jpg', type: 'image', thumbnail: '/ressources/25-decembre-2025.png', isBlurred: false, date: '28 juillet 2025', description: 'Été solitaire' },
+    // { id: 7, name: 'livraison_courses.jpg', type: 'image', thumbnail: '/img.png', isBlurred: true, date: '3 octobre 2025', description: 'Isolement' },
+    { id: 8, name: 'masqué.jpg', type: 'image', thumbnail: '', isBlurred: false, date: '25 décembre 2025', description: '⚠️ FICHIER COMPROMIS', isCompromised: true },
 ];
 
 export default function DriveApp() {
@@ -36,7 +39,13 @@ export default function DriveApp() {
                         <span>←</span>
                         <span>Retour</span>
                     </button>
-                    <h2 className="text-lg font-medium">{selectedFile.name}</h2>
+                    <div className="text-center">
+                        <h2 className="text-lg font-medium">{selectedFile.name}</h2>
+                        <p className="text-sm text-gray-500">{selectedFile.date}</p>
+                        {selectedFile.description && (
+                            <p className="text-xs text-gray-400">{selectedFile.description}</p>
+                        )}
+                    </div>
                     <div className="w-20"></div>
                 </div>
 
@@ -53,17 +62,56 @@ export default function DriveApp() {
                     </div>
                 </div>
 
-                {selectedFile.name === 'masqué.jpg' && !selectedFile.isBlurred && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-                        <div className="bg-red-900 text-white p-8 rounded-lg max-w-md text-center">
-                            <div className="text-6xl mb-4">⚠️</div>
-                            <h3 className="text-2xl font-bold mb-4">FICHIER COMPROMIS</h3>
-                            <p className="mb-4">
-                                Cette image contient des données sensibles qui ont été exfiltrées.
-                            </p>
-                            <p className="text-red-300">
-                                Toutes vos données personnelles sont maintenant entre nos mains.
-                            </p>
+                {selectedFile.isCompromised && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-black via-red-950 to-black backdrop-blur-sm p-4">
+                        <div className="bg-gradient-to-br from-red-950 to-red-900 border-2 border-red-500 text-white p-8 rounded-xl max-w-2xl shadow-2xl shadow-red-500/50">
+                            <div className="text-7xl mb-6 animate-pulse">⚠️</div>
+                            <h3 className="text-3xl font-bold mb-6 text-red-200">DONNÉES COMPROMISES</h3>
+
+                            <div className="space-y-4 text-left mb-8">
+                                <p className="text-lg">
+                                    Vos contenus sensibles ont été découverts et indexés.
+                                </p>
+                                <p className="text-red-300 font-semibold">
+                                    Nous avons accès à :
+                                </p>
+                                <ul className="list-disc list-inside space-y-2 text-red-200 ml-4">
+                                    <li>Vos photos et vidéos privées</li>
+                                    <li>Vos conversations personnelles</li>
+                                    <li>Vos informations bancaires</li>
+                                    <li>Les contacts de vos proches</li>
+                                </ul>
+                            </div>
+
+                            <div className="bg-black/40 p-6 rounded-lg border border-red-500/50 mb-6">
+                                <p className="text-sm text-red-300 mb-4">
+                                    Les preuves ont été retrouvées sur ces plateformes :
+                                </p>
+                                <div className="space-y-3">
+                                    <a
+                                        href="/desktop?app=browser&url=onlyfon"
+                                        className="block w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg"
+                                    >
+                                        <div className="flex items-center justify-center gap-3">
+                                            <span className="text-2xl">💎</span>
+                                            <span>Voir le profil OnlyFon</span>
+                                        </div>
+                                    </a>
+                                    <a
+                                        href="/desktop?app=browser&url=instagrom"
+                                        className="block w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg"
+                                    >
+                                        <div className="flex items-center justify-center gap-3">
+                                            <span className="text-2xl">📷</span>
+                                            <span>Voir les messages Instagram</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div className="text-xs text-red-400 italic border-t border-red-500/50 pt-4">
+                                &quot;Je sais tout. Tes vidéos, tes messages, l&apos;adresse de tes parents, le mail pro de Julien...&quot;
+                            </div>
                         </div>
                     </div>
                 )}
@@ -130,7 +178,10 @@ export default function DriveApp() {
                                     <p className="text-sm font-medium text-gray-900 truncate">
                                         {file.name}
                                     </p>
-                                    <p className="text-xs text-gray-500">Image</p>
+                                    <p className="text-xs text-gray-500">{file.date}</p>
+                                    {file.description && (
+                                        <p className="text-xs text-gray-400 truncate">{file.description}</p>
+                                    )}
                                 </div>
                             </div>
 

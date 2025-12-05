@@ -15,7 +15,7 @@ export default function Login() {
 
         // Simulate login delay
         setTimeout(() => {
-            if (password === '1234') {
+            if (password === 'barnabé') { // indice sur le fond d'écran
                 router.push('/desktop');
             } else {
                 setError('Incorrect password');
