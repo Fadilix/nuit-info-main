@@ -1,5 +1,6 @@
 'use client';
-import {useState, useEffect} from 'react';
+
+import {useState, useEffect, Suspense} from 'react';
 import { useSearchParams } from 'next/navigation';
 import JumpScare from "@/app/components/screenhack";
 import WhatsAppNotification from "@/app/components/WhatsAppNotification";
@@ -9,7 +10,7 @@ import DiaryApp from "@/app/components/DiaryApp";
 import Browser from "@/app/components/Browser";
 import { useCountdown } from "@/app/context/CountdownContext";
 
-export default function Desktop() {
+function DesktopContent() {
     const [showNotification, setShowNotification] = useState(false);
     const [showTerminal, setShowTerminal] = useState(false);
     const [showJumpscare, setShowJumpscare] = useState(false);
@@ -250,3 +251,12 @@ export default function Desktop() {
         </div>
     );
 }
+
+export default function Desktop() {
+    return (
+        <Suspense fallback={<div className="h-screen w-screen wall_back bg-black"></div>}>
+            <DesktopContent />
+        </Suspense>
+    );
+}
+
