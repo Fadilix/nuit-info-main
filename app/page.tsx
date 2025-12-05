@@ -98,16 +98,16 @@ export default function Home() {
                         <Image
                             height={300}
                             width={450}
-                            src="/mockup.png"
+                            src="/desktop.png"
                             alt="Laptop"
-                            className="max-w-full h-auto opacity-80"
+                            className="w-[100vw] h-[120vh] opacity-80 absolute top-0 left-0 right-0 mx-auto mt-[-100px] object-cover"
                         />
                     </div>
-                    <div>
-                        <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-4">
+                    <div className={"text-black"}>
+                        <h1 className="text-2xl md:text-4xl font-bold mb-4 text-black z-20 opacity-100">
                             Welcome
                         </h1>
-                        <p className="text-lg md:text-xl text-gray-600">
+                        <p className="text-lg md:text-xl text-black">
                             Touch anywhere to start
                         </p>
                         <div className="mt-4 text-sm text-gray-500">

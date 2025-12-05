@@ -17,8 +17,8 @@ export default function WarningPage({ onCorrectAnswer }: WarningPageProps) {
 
     const checkAnswer = () => {
         const value = answer.trim();
-        const values = ["15062024", "15 Juin 2024", "15/06/2024", "15-06-2024"];
-        values.map((value) => value.toLowerCase());
+        let values = ["15062024", "15 Juin 2024", "15/06/2024", "15-06-2024"];
+        values = values.map((value) => value.toLowerCase());
 
         if (values.includes(value.toLowerCase())) {
             onCorrectAnswer();
