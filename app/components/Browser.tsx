@@ -1,10 +1,11 @@
 'use client';
 import React, { useState, useRef } from 'react';
 import DriveApp from './DriveApp';
+import InstagramApp from './InstagramApp';
 
 export default function Browser() {
     const [url, setUrl] = useState('');
-    const [currentPage, setCurrentPage] = useState<'home' | 'drive'>('home');
+    const [currentPage, setCurrentPage] = useState<'home' | 'drive' | 'instagram'>('home');
     const [searchSuggestion, setSearchSuggestion] = useState('');
     const inputRef = useRef<HTMLInputElement>(null);
 
@@ -15,6 +16,9 @@ export default function Browser() {
         if (searchTerm === 'drive' || searchTerm.includes('drive')) {
             setCurrentPage('drive');
             setUrl('https://drive.google.com/my-photos');
+        } else if (searchTerm === 'instagrom' || searchTerm === 'martin.kil' || searchTerm.includes('instagrom') || searchTerm.includes('martin')) {
+            setCurrentPage('instagram');
+            setUrl('https://instagrom.com/martin.kil');
         }
     };
 
@@ -22,9 +26,14 @@ export default function Browser() {
         const value = e.target.value;
         setUrl(value);
 
-        // Autocompletion pour "drive"
-        if (value.toLowerCase().startsWith('d') && 'drive'.startsWith(value.toLowerCase())) {
+        // Autocompletion
+        const lowerValue = value.toLowerCase();
+        if (lowerValue && 'drive'.startsWith(lowerValue)) {
             setSearchSuggestion('drive');
+        } else if (lowerValue && 'instagrom'.startsWith(lowerValue)) {
+            setSearchSuggestion('instagrom');
+        } else if (lowerValue && 'martin.kil'.startsWith(lowerValue)) {
+            setSearchSuggestion('martin.kil');
         } else {
             setSearchSuggestion('');
         }
@@ -50,9 +59,13 @@ export default function Browser() {
                 {/* Tab Bar */}
                 <div className="flex items-center px-2 pt-2 bg-gray-200">
                     <div className="bg-white px-4 py-2 rounded-t-lg border border-b-0 flex items-center space-x-2">
-                        <span className="text-sm">🌐</span>
+                        <span className="text-sm">
+                            {currentPage === 'instagram' ? '📷' : '🌐'}
+                        </span>
                         <span className="text-sm font-medium">
-                            {currentPage === 'drive' ? 'Mon Drive' : 'Nouvel onglet'}
+                            {currentPage === 'drive' ? 'Mon Drive' :
+                             currentPage === 'instagram' ? 'martin.kil • Instagrom' :
+                             'Nouvel onglet'}
                         </span>
                     </div>
                 </div>
@@ -121,17 +134,21 @@ export default function Browser() {
                             <div className="absolute top-full left-0 right-0 mt-1 bg-white border rounded-lg shadow-lg z-10">
                                 <button
                                     onClick={() => {
-                                        setUrl('drive');
+                                        if (searchSuggestion === 'drive') {
+                                            setUrl('https://drive.google.com/my-photos');
+                                            setCurrentPage('drive');
+                                        } else if (searchSuggestion === 'instagrom' || searchSuggestion === 'martin.kil') {
+                                            setUrl('https://instagrom.com/martin.kil');
+                                            setCurrentPage('instagram');
+                                        }
                                         setSearchSuggestion('');
-                                        setCurrentPage('drive');
-                                        setUrl('https://drive.google.com/my-photos');
                                     }}
                                     className="w-full px-4 py-2 hover:bg-gray-100 flex items-center space-x-3 text-left"
                                 >
                                     <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                     </svg>
-                                    <span>drive</span>
+                                    <span>{searchSuggestion}</span>
                                 </button>
                             </div>
                         )}
@@ -160,14 +177,22 @@ export default function Browser() {
                             <p className="text-gray-600 mb-6">
                                 Commencez à naviguer en tapant dans la barre de recherche
                             </p>
-                            {/*<div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-800">*/}
-                            {/*    <p className="font-medium mb-2">💡 Astuce :</p>*/}
-                            {/*    <p>Essayez de rechercher &quot;drive&quot; pour accéder à vos fichiers</p>*/}
-                            {/*</div>*/}
+                            <div className="space-y-3">
+                                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-800">
+                                    <p className="font-medium mb-2">💡 Astuce :</p>
+                                    <p>Essayez de rechercher &quot;drive&quot; pour accéder à vos fichiers</p>
+                                </div>
+                                <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 text-sm text-purple-800">
+                                    <p className="font-medium mb-2">📷 Nouveau :</p>
+                                    <p>Recherchez &quot;instagrom&quot; ou &quot;martin.kil&quot;</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 ) : currentPage === 'drive' ? (
                     <DriveApp />
+                ) : currentPage === 'instagram' ? (
+                    <InstagramApp />
                 ) : null}
             </div>
         </div>

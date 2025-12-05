@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Instagram Feed</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #df7adf;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+        }
+
+        .feed {
+            width: 360px;
+        }
+
+        .post {
+            width: 100%;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background: #ccc;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .username { font-weight: bold; }
+
+        .post-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .post-actions {
+            padding: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .post-info {
+            padding: 10px;
+        }
+
+        .likes {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .comment { margin-bottom: 5px; }
+
+        .comment span {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        .user-link {
+            font-weight: bold;
+            color: #000;          /* noir comme les autres pseudos */
+            text-decoration: none; /* enlève soulignement */
+            margin-right: 5px;
+        }
+
+        .user-link:hover {
+            text-decoration: underline; /* optionnel */
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="feed">
+
+    <!-- POST 1 — Emily -->
+    <div class="post">
+        <div class="post-header">
+            <div class="avatar"></div>
+            <div class="username">emily.rose</div>
+        </div>
+
+        <img class="post-img"
+             src="https://images.unsplash.com/photo-1626808642875-0aa545482dfb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2VzJTIwZ3JhdHVpdGVzfGVufDB8fDB8fHww"
+             alt="Emily">
+
+        <div class="post-actions">❤️ 💬 ➤</div>
+
+        <div class="post-info">
+            <div class="likes">3,842 likes</div>
+            <div class="comment"><span>zoey.dev</span>EMILY 😳😳 tu brilles là !!</div>
+            <div class="comment"><span>ken.photo</span>On dirait un film 🔥🔥🔥</div>
+            <div class="comment"><span>mila.art</span>Mais W T F c’est trop beau 😭💗</div>
+            <div class="comment"><span>emily.rose</span>stopppp vous êtes adorables 😭💞</div>
+            <div class="comment">
+                <a href="warning.html" class="user-link">anonymous.5842</a>
+                Attention, fr...
+            </div>
+
+        </div>
+    </div>
+
+    <!-- POST 2 — Emily table -->
+    <div class="post">
+        <div class="post-header">
+            <div class="avatar"></div>
+            <div class="username">emily.rose</div>
+        </div>
+
+        <img class="post-img"
+             src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?q=80&w=1474&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+             alt="table">
+
+        <div class="post-actions">❤️ 💬 ➤</div>
+
+        <div class="post-info">
+            <div class="likes">1,932 likes</div>
+            <div class="comment"><span>alex</span>Comment même ta TABLE est esthétique ??? 😭</div>
+            <div class="comment"><span>zoey.dev</span>Je refuse de croire que c’est juste une table 😭</div>
+            <div class="comment"><span>emily.rose</span>LMAO arrêtez 💀💀💀</div>
+        </div>
+    </div>
+
+    <!-- POST 3 — Zoey -->
+    <div class="post">
+        <div class="post-header">
+            <div class="avatar"></div>
+            <div class="username">zoey.dev</div>
+        </div>
+
+        <img class="post-img"
+             src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+             alt="zoey photo">
+
+        <div class="post-actions">❤️ 💬 ➤</div>
+
+        <div class="post-info">
+            <div class="likes">5,104 likes</div>
+            <div class="comment"><span>mila.art</span>ZOEYYY arrête d’être trop ICONIQUE 😭🔥</div>
+            <div class="comment"><span>ken.photo</span>Je hurle c’est trop propre 🤯</div>
+            <div class="comment"><span>emily.rose</span>ok queen 👑✨</div>
+        </div>
+    </div>
+
+    <!-- POST 4 — Ken -->
+    <div class="post">
+        <div class="post-header">
+            <div class="avatar"></div>
+            <div class="username">ken.photo</div>
+        </div>
+
+        <img class="post-img"
+             src="https://images.unsplash.com/photo-1526040652367-ac003a0475fe"
+             alt="ken table">
+
+        <div class="post-actions">❤️ 💬 ➤</div>
+
+        <div class="post-info">
+            <div class="likes">2,847 likes</div>
+            <div class="comment"><span>zoey.dev</span>KENNNN c’est trop stylé ça 🔥🔥🔥</div>
+            <div class="comment"><span>emily.rose</span>Bro calme-toi tu vas casser Insta 💀</div>
+            <div class="comment"><span>alex</span>Ça tape, vraiment 😳</div>
+            <div class="comment"><span>anonymous.5842</span>Si j'étais toi, je m'afficherais pas sur les réseaux </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

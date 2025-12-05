@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Warning</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            transition: background 0.5s;
+        }
+
+        .lock {
+            font-size: 120px;
+            margin-bottom: 20px;
+            transition: opacity 0.5s;
+        }
+
+        .secret {
+            font-size: 22px;
+            color: #000;
+            transition: color 0.4s ease, opacity 0.4s;
+            cursor: pointer;
+        }
+
+        .secret:hover {
+            color: #444;
+        }
+
+        .question-box {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            text-align: center;
+            animation: fadeIn 0.6s forwards;
+        }
+
+        .question-text {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        input {
+            padding: 10px;
+            border: 2px solid #fff;
+            background: transparent;
+            color: white;
+            width: 230px;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #ff4b4b;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #cc0000;
+        }
+    </style>
+</head>
+
+<body onclick="triggerWarning()">
+
+<div class="lock" id="lock">🔒</div>
+
+<div class="secret" id="secret">Tu aurais dû ignorer ça…</div>
+
+<div class="question-box" id="qBox">
+    <div class="question-text">plus beaux moments de ma vie</div>
+    <input type="text" placeholder="Écris ta réponse ici…">
+    <button onclick="checkAnswer()">Continuer</button>
+</div>
+
+<script>
+    let activated = false;
+
+    function triggerWarning() {
+        if (activated) return;
+        activated = true;
+
+        document.body.style.background = "#dc0a2e";
+
+        document.getElementById("lock").style.opacity = 0;
+        document.getElementById("secret").style.opacity = 0;
+
+        setTimeout(() => {
+            document.getElementById("qBox").style.display = "flex";
+        }, 600);
+    }
+
+    function checkAnswer() {
+        let value = document.querySelector("input").value.trim();
+
+        if (value === "1/10/2022") {
+            window.location.href = "identite.html";
+        } else {
+            alert("Mauvaise réponse indice : c'est une date .");
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Profil — martin.kil</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding-top: 30px;
+        }
+
+        .profile {
+            width: 360px;
+        }
+
+        /* HEADER */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .avatar {
+            width: 90px;
+            height: 90px;
+            background: #d9d9d9; /* vide, pas de photo */
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .stats div span {
+            font-weight: bold;
+            font-size: 18px;
+            display: block;
+        }
+
+        .username {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .bio {
+            padding: 0 10px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .no-posts {
+            text-align: center;
+            margin-top: 70px;
+            color: #999;
+            font-size: 18px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="profile">
+
+    <!-- HEADER -->
+    <div class="profile-header">
+        <div class="avatar"></div>
+
+        <div class="stats">
+            <div>
+                <span>0</span>
+                Publications
+            </div>
+            <div>
+                <span>1</span>
+                Followers
+            </div>
+            <div>
+                <span>0</span>
+                Suivies
+            </div>
+        </div>
+    </div>
+
+    <!-- USERNAME -->
+    <div class="username">martin.kil</div>
+
+    <!-- BIO (vide volontairement) -->
+    <div class="bio"></div>
+
+    <hr>
+
+    <!-- AUCUN POST -->
+    <div class="no-posts">Aucun post</div>
+
+</div>
+
+</body>
+</html>
