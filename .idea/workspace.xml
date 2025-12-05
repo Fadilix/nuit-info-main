@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6624af54-d073-447d-85fa-8583bfb19721" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/copilotDiffState.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/TerminalAnimation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/TerminalAnimation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/screenhack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/screenhack.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/context/CountdownContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/context/CountdownContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/desktop/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/desktop/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
