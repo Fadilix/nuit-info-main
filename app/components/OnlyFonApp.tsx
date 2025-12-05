@@ -22,7 +22,7 @@ interface Post {
 const profile: Profile = {
     username: '@emily.rose_exclusive',
     displayName: 'Emily Rose 🌹',
-    bio: 'Contenu exclusif ✨ Photos professionnelles 📸 DM pour collaborations',
+    bio: 'Contenu exclusif ✨ Photos professionnelles 📸 DM sur insta pour collaborations',
     profileImage: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=80',
     coverImage: 'https://images.unsplash.com/photo-1557683316-973673baf926?w=1200&auto=format&fit=crop&q=80',
     postCount: 234,

@@ -5,23 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6624af54-d073-447d-85fa-8583bfb19721" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/copilotDiffState.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/0-fond-d-écran.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/ressources/0-fond-d-écran.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/10-janvier-2025.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/ressources/10-janvier-2025.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/13-octobre-2024.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/ressources/13-octobre-2024.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/15-juin-2024.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/ressources/15-juin-2024.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/22-semptembre-2024.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/ressources/22-semptembre-2024.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/25-decembre-2025.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/ressources/25-decembre-2025.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ressources/3-octobre-2025.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/ressources/3-octobre-2025.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Browser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Browser.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/DriveApp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/DriveApp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/IdentityPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/IdentityPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/WarningPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/WarningPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/desktop/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/desktop/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/journal.md" beforeDir="false" afterPath="$PROJECT_DIR$/journal.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
