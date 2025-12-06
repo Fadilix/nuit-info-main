@@ -11,6 +11,20 @@ export default function Home() {
     const [startAnimation, setStartAnimation] = useState(false);
     const [audioStatus, setAudioStatus] = useState('waiting');
 
+    const handleResetScenario = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        // Clear all localStorage keys related to the scenario
+        localStorage.removeItem('hasSeenNotification');
+        localStorage.removeItem('hasCompletedCycle');
+        localStorage.removeItem('bitcoinCountdown');
+
+        // Show confirmation
+        alert('✅ Scénario réinitialisé ! La page va se recharger.');
+
+        // Reload the page to restart from scratch
+        window.location.reload();
+    };
+
     const handleStart = async () => {
         try {
             setAudioStatus('enabling...');
@@ -53,7 +67,17 @@ export default function Home() {
     }, [startAnimation, router]);
 
     return (
-        <div className="h-screen w-screen flex items-center justify-center overflow-hidden">
+        <div className="h-screen w-screen flex items-center justify-center overflow-hidden relative">
+            {/* Reset Button - Fixed at top right */}
+            <button
+                onClick={handleResetScenario}
+                className="fixed top-4 right-4 z-50 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg shadow-lg flex items-center space-x-2 transition-colors"
+                title="Réinitialiser le scénario"
+            >
+                <span>🔄</span>
+                <span className="font-semibold">Reset Scénario</span>
+            </button>
+
             {showStartPrompt ? (
                 // Start prompt screen
                 <div
@@ -79,7 +103,7 @@ export default function Home() {
                             className="max-w-full h-auto opacity-80"
                         />
                     </div>
-                    <div className="animate-pulse">
+                    <div>
                         <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-4">
                             Welcome
                         </h1>
